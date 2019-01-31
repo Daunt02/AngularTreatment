@@ -1,0 +1,84 @@
+<div [hidden]="submitted">
+  <h1>Free Moving Estimate</h1>
+  <form (ngSubmit)="onSubmit()" #custForm="ngForm">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" 
+          required
+          [(ngModel)]="model.name" name="name"
+          #name="ngModel">
+      <div [hidden]="name.valid || name.pristine"
+        class="alert alert-danger">
+      Name is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Your Phone #</label>
+      <input type="text" class="form-control" id="phone"
+          required
+          [(ngModel)]="model.phone" name="phone"
+          #phone="ngModel">
+        <div [hidden]="phone.valid || phone.pristine"
+          class="alert alert-danger">
+          Your Phone Number is Required
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Your Email</label>
+      <input class="form-control" id="email" 
+          required
+          [(ngModel)]="model.email" name="email"
+          #email="ngModel">
+        <div [hidden]="email.valid || email.pristine"
+          class="alert alert-danger">
+        Your Email is Required
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="startaddress">Start Location</label>
+      <input class="form-control" id="startaddress" 
+          required
+          [(ngModel)]="model.startaddress" name="startaddress"
+          #startaddress="ngModel">
+        <div [hidden]="startaddress.valid || startaddress.pristine"
+          class="alert alert-danger">
+        Your Starting Location is Required
+        </div>
+    </div>
+    <div class="form-group">
+      <label for="endaddress">End Location</label>
+      <input class="form-control" id="endaddress" 
+          required
+          [(ngModel)]="model.endaddress" name="endaddress"
+          #endaddress="ngModel">
+        Your Ending Location is required
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!custForm.form.valid">GET YOUR FREE ESTIMATE</button>
+  </form>
+</div>
+<div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Phone Number</div>
+      <div class="col-xs-9">{{ model.phone }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Email</div>
+      <div class="col-xs-9">{{ model.email }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Start Address</div>
+      <div class="col-xs-9">{{ model.startaddress }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">End Address</div>
+      <div class="col-xs-9">{{ model.endaddress }}</div>
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
